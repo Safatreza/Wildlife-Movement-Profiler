@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+  simulator:
+    build: .
+    environment:
+      - SERVICE=simulator
+      - SIM_SPECIES=deer
+      - SIM_MODE=walk
+      - SIM_SAMPLING_RATE=1.0
+      - SIM_DURATION=60
+    volumes:
+      - data:/app
+    restart: unless-stopped
+
+  processor:
+    build: .
+    environment:
+      - SERVICE=processor
+    depends_on:
+      - simulator
+    volumes:
+      - data:/app
+    restart: unless-stopped
+
+  api:
+    build: .
+    environment:
+      - SERVICE=api
+      - PORT=8000
+    depends_on:
+      - processor
+    ports:
+      - "8000:8000"
+    volumes:
+      - data:/app
+    restart: unless-stopped
+
+  dashboard:
+    build: .
+    environment:
+      - SERVICE=dashboard
+      - PORT=8050
+    depends_on:
+      - api
+    ports:
+      - "8050:8050"
+    volumes:
+      - data:/app
+    restart: unless-stopped
+
+volumes:
+  data: 

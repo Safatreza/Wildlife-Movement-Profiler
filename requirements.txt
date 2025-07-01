@@ -1,0 +1,13 @@
+flask
+fastapi
+uvicorn
+plotly
+pandas
+numpy
+scikit-learn
+geopandas
+shapely
+pydantic
+requests
+pytest
+python-dotenv 

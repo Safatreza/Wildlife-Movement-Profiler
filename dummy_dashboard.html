@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wildlife Movement Profiler - Dummy Dashboard</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f7; }
+    .container { max-width: 1200px; margin: 30px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #ccc; padding: 24px; }
+    h1 { text-align: center; }
+    .viz-row { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; }
+    .viz { flex: 1 1 400px; min-width: 350px; }
+    .desc { margin: 24px 0; color: #444; }
+    .footer { text-align: center; margin: 32px 0 0 0; color: #888; font-size: 0.95em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Wildlife Movement Profiler<br><span style="font-size:0.6em; color:#888">Dummy Dashboard</span></h1>
+    <div class="desc">
+      <b>Demo:</b> This dashboard visualizes sample wildlife telemetry data and behavior classification.<br>
+      <b>No installation required.</b> All data and logic are embedded in this HTML file.
+    </div>
+    <div class="viz-row">
+      <div class="viz">
+        <h3>Animal Track (Map)</h3>
+        <div id="map" style="height:400px;"></div>
+      </div>
+      <div class="viz">
+        <h3>Sensor Data</h3>
+        <div id="sensors" style="height:400px;"></div>
+      </div>
+    </div>
+    <div class="viz-row">
+      <div class="viz">
+        <h3>Behavior Over Time</h3>
+        <div id="behavior" style="height:400px;"></div>
+      </div>
+    </div>
+    <div class="footer">
+      Wildlife Movement Profiler &copy; 2024 &mdash; Dummy version for demo and education.<br>
+      <a href="https://github.com/your-repo/wildlife-movement-profiler" target="_blank">Project Repository</a>
+    </div>
+  </div>
+  <script>
+    // --- Sample Data ---
+    const telemetry = [
+      {timestamp: 1, lat: 45.0, lon: -75.0, speed: 0.1, accel_mag: 1.0, temperature: 38.2, behavior: 'resting'},
+      {timestamp: 2, lat: 45.0001, lon: -75.0001, speed: 0.3, accel_mag: 1.2, temperature: 38.3, behavior: 'walking'},
+      {timestamp: 3, lat: 45.0003, lon: -75.0002, speed: 1.2, accel_mag: 2.0, temperature: 38.4, behavior: 'running'},
+      {timestamp: 4, lat: 45.0006, lon: -75.0003, speed: 0.2, accel_mag: 1.1, temperature: 38.2, behavior: 'walking'},
+      {timestamp: 5, lat: 45.0008, lon: -75.0004, speed: 0.1, accel_mag: 1.0, temperature: 38.1, behavior: 'resting'}
+    ];
+    // --- Map Visualization (Plotly) ---
+    const mapTrace = {
+      type: 'scattermapbox',
+      lat: telemetry.map(d => d.lat),
+      lon: telemetry.map(d => d.lon),
+      mode: 'lines+markers',
+      marker: {size: 10, color: telemetry.map(d => d.behavior === 'running' ? 'red' : d.behavior === 'walking' ? 'orange' : 'blue')},
+      line: {width: 3, color: '#0074D9'},
+      text: telemetry.map(d => `Time: ${d.timestamp}<br>Behavior: ${d.behavior}`),
+      hoverinfo: 'text'
+    };
+    Plotly.newPlot('map', [mapTrace], {
+      mapbox: {
+        style: 'open-street-map',
+        center: {lat: 45.0004, lon: -75.0002},
+        zoom: 13
+      },
+      margin: {l:0, r:0, t:0, b:0},
+      showlegend: false,
+      height: 400
+    }, {mapboxAccessToken: 'pk.eyJ1IjoiZHVtbXkiLCJhIjoiY2t2b2Z2b2Z2b2Z2b2Z2b2Z2b2Z2b2Z2In0.dummy'});
+    // --- Sensor Data Visualization ---
+    const time = telemetry.map(d => d.timestamp);
+    Plotly.newPlot('sensors', [
+      {x: time, y: telemetry.map(d => d.speed), name: 'Speed', mode: 'lines+markers'},
+      {x: time, y: telemetry.map(d => d.accel_mag), name: 'Accel Mag', mode: 'lines+markers'},
+      {x: time, y: telemetry.map(d => d.temperature), name: 'Temperature', mode: 'lines+markers'}
+    ], {
+      title: 'Sensor Data Over Time',
+      xaxis: {title: 'Time'},
+      yaxis: {title: 'Value'},
+      height: 400
+    });
+    // --- Behavior Over Time ---
+    const behaviorColors = {resting: 'blue', walking: 'orange', running: 'red'};
+    Plotly.newPlot('behavior', [
+      {
+        x: time,
+        y: telemetry.map(d => d.behavior),
+        mode: 'lines+markers',
+        marker: {color: telemetry.map(d => behaviorColors[d.behavior] || 'gray'), size: 12},
+        line: {color: '#888', width: 2},
+        name: 'Behavior',
+        text: telemetry.map(d => `Behavior: ${d.behavior}`),
+        hoverinfo: 'text+y'
+      }
+    ], {
+      title: 'Behavior Classification Over Time',
+      xaxis: {title: 'Time'},
+      yaxis: {title: 'Behavior', type: 'category'},
+      height: 400
+    });
+  </script>
+</body>
+</html> 
