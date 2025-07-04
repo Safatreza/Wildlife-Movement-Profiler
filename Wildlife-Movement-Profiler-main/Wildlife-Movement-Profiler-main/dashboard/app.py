@@ -13,7 +13,7 @@ app = FastAPI()
 # Set up Jinja2 templates directory for HTML rendering
 templates = Jinja2Templates(directory="dashboard/templates")
 # Mount static files (JS, CSS, etc.)
-app.mount("/static", StaticFiles(directory="dashboard/static"), name="static")
+# app.mount("/static", StaticFiles(directory="dashboard/static"), name="static")
 
 # Path to telemetry data CSV
 DATA_PATH = "simulated_telemetry.csv"
