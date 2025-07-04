@@ -1,5 +1,17 @@
 # Wildlife Movement Profiler — Usage & Comments
 
+## Quick Launch: Dummy Dashboard
+
+To instantly open the dummy dashboard in your browser from anywhere in the project, run:
+
+```sh
+python -m webbrowser Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/dummy_dashboard.html
+```
+
+This command works on all platforms (Windows, macOS, Linux) and requires only Python (no extra dependencies).
+
+---
+
 **Note:** All commands below use explicit relative paths, so you can run them from anywhere inside the project directory. The dashboard now runs on port 8050 by default.
 
 ---
@@ -27,9 +39,10 @@ python Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/dashboard
 **Dummy mode** allows you to demo and visualize the dashboard and analytics features without running any backend or installing Python. This is ideal for quick demos, development, or sharing the project with others.
 
 **Steps:**
-1. Locate the file:
+1. Use the quick launch command above, or
+2. Locate the file:
    - `Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/dummy_dashboard.html`
-2. Double-click or right-click and open it in any modern web browser (Chrome, Firefox, Edge, etc.).
+   and open it in any modern web browser.
 3. Explore the interactive map, charts, and controls. All data and logic are embedded in the HTML file—no backend or server is needed.
 
 **What to expect:**
