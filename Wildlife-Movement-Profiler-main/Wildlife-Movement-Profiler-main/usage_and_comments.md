@@ -1,5 +1,23 @@
 # Wildlife Movement Profiler - Usage & Comments
 
+## Using the Dummy Version (No Installation Required)
+
+The dummy version is a standalone HTML file that demonstrates the core visualization features of the platform using pre-generated sample data. No Python or dependencies are required.
+
+**To use the dummy dashboard:**
+
+1. Locate the file: `Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/dummy_dashboard.html`
+2. Double-click or right-click and open it in any modern web browser (Chrome, Firefox, Edge, etc.).
+3. Explore the interactive map, charts, and controls. All data and logic are embedded in the HTML file—no backend or server is needed.
+
+**When to use:**
+- For quick demos, presentations, or sharing with non-technical users.
+- To preview the dashboard's capabilities before running the full Python project.
+
+---
+
+## Using the Full Python Project
+
 This file provides all the commands you need to install dependencies, run simulations, preprocess data, classify behaviors, and launch the dashboard/API. All commands are copy-paste ready and can be run from anywhere in the project directory tree.
 
 ---
@@ -49,7 +67,7 @@ python Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/classifie
 # Start the FastAPI dashboard using uvicorn
 python Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/dashboard/app.py
 
-# The dashboard will automatically open in your default web browser at http://127.0.0.1:8000/
+# The dashboard will automatically open in your default web browser at http://127.0.0.1:8050/
 ```
 
 ---
@@ -81,6 +99,7 @@ pytest Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/tests/tes
 - `dashboard/app.py`: FastAPI dashboard for visualization.
 - `api/`: FastAPI API endpoints for programmatic access (requires integration).
 - `tests/`: Test suite for the pipeline.
+- `dummy_dashboard.html`: Standalone HTML demo of the dashboard (no Python required).
 
 ---
 
@@ -89,4 +108,4 @@ pytest Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/tests/tes
 - The dashboard requires `dashboard/templates/index.html` and `dashboard/static/` for HTML and static assets. Create these if you want to customize the UI.
 - Default authentication for API is username: `admin`, password: `password` (for demo only).
 - All commands assume you have Python and pip installed and available in your PATH.
-- When running the dashboard, your browser will open automatically to the correct address. 
+- When running the dashboard, your browser will open automatically to http://127.0.0.1:8050/. 
