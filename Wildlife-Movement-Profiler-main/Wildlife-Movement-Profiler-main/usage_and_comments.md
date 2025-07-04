@@ -1,14 +1,19 @@
 # Wildlife Movement Profiler — Usage & Comments
 
-## Quick Launch: Dummy Dashboard
+## Quick Launch: Dummy Dashboard on Localhost
 
-To instantly open the dummy dashboard in your browser from anywhere in the project, run:
+To serve and view the dummy dashboard at a localhost URL (recommended for best browser compatibility):
 
 ```sh
-python -m webbrowser Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/dummy_dashboard.html
+# 1. Start a simple HTTP server (from anywhere in the project):
+python -m http.server 8050 --directory Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main
+
+# 2. In a new terminal, open the dashboard in your browser:
+python -m webbrowser http://localhost:8050/dummy_dashboard.html
+# Or manually visit: http://localhost:8050/dummy_dashboard.html
 ```
 
-This command works on all platforms (Windows, macOS, Linux) and requires only Python (no extra dependencies).
+This approach works on all platforms and ensures the dashboard is served over HTTP, not file://, which is required for some browser features.
 
 ---
 
@@ -39,7 +44,7 @@ python Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/dashboard
 **Dummy mode** allows you to demo and visualize the dashboard and analytics features without running any backend or installing Python. This is ideal for quick demos, development, or sharing the project with others.
 
 **Steps:**
-1. Use the quick launch command above, or
+1. Use the quick launch commands above, or
 2. Locate the file:
    - `Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/dummy_dashboard.html`
    and open it in any modern web browser.
@@ -124,7 +129,7 @@ pytest Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/tests/tes
 ## 8. Troubleshooting
 - **No data on dashboard?**
   - Ensure `python Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/dashboard/app.py` is running and the dashboard is open in your browser at [http://localhost:8050/](http://localhost:8050/).
-  - For dummy mode, ensure you are opening the correct HTML file.
+  - For dummy mode, ensure you are opening the correct HTML file or using the localhost quick launch method above.
   - Refresh the dashboard page if needed.
   - Check your terminal for errors or warnings.
   - If port 8050 is in use, stop any other process using it or change the port in `dashboard/app.py`.
