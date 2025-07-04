@@ -30,7 +30,7 @@ pip install -r Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/r
 ```sh
 python Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/dashboard/app.py
 ```
-- The dashboard will automatically open in your default web browser at [http://localhost:8050/](http://localhost:8050/).
+- After running the above command, **open [http://localhost:8050/](http://localhost:8050/) in your web browser** to access the dashboard.
 
 ---
 
@@ -93,10 +93,10 @@ pytest Wildlife-Movement-Profiler-main/Wildlife-Movement-Profiler-main/tests/tes
 ## 7. Module Purposes & Key Comments
 
 ### `dashboard/app.py`
-- **Purpose:** Main backend server. Hosts the dashboard, serves telemetry and analytics endpoints, and auto-opens the dashboard in the browser.
+- **Purpose:** Main backend server. Hosts the dashboard, serves telemetry and analytics endpoints. User must open the dashboard URL manually.
 - **Key Comments:**
   - "FastAPI dashboard app for visualizing wildlife telemetry and behavior data"
-  - "Auto-opens dashboard in browser on port 8050"
+  - "Runs on port 8050; open http://localhost:8050/ manually"
 
 ### `simulator/generator.py`
 - **Purpose:** Generates synthetic wildlife telemetry data (GPS, accelerometer, etc.) and saves to CSV.

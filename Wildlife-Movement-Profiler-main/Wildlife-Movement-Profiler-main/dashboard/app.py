@@ -116,16 +116,7 @@ async def filter_data(start: float = None, end: float = None, behavior: str = No
 # - dashboard/static/ (for JS, CSS, etc.)
 
 if __name__ == "__main__":
-    # If run directly, start the Uvicorn server and open the dashboard in the default web browser
+    # If run directly, start the Uvicorn server on port 8050
+    # Open http://127.0.0.1:8050/ in your browser to access the dashboard
     import uvicorn
-    import webbrowser
-    import threading
-    import time
-
-    def open_browser():
-        # Wait a moment for the server to start
-        time.sleep(1)
-        webbrowser.open_new("http://127.0.0.1:8050/")
-
-    threading.Thread(target=open_browser).start()
     uvicorn.run("dashboard.app:app", host="127.0.0.1", port=8050, reload=False) 
